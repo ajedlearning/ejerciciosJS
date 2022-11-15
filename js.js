@@ -47,13 +47,51 @@ console.log('********************************')
 console.log('Ejercicio 4')
 
 const repetirN = (cadena = 'Default', veces = 10)=> {
-  if (typeof cadena === 'string' && !isNaN(veces)) {
-    for (let i = 0; i < veces; i++) {
-      console.log(cadena + ' ' + (i + 1))
-    }
-  } else {
-    return console.error('Debes introducir valores válidos')
-  }
+   
+if(typeof cadena !== 'string' || isNaN(veces))return console.error('Debes introducir valores válidos');
+if(veces === 0)return console.error('Las veces no pueden ser cero'); 
+if(veces < 0)return console.error('Las veces no pueden ser negativas'); 
+    
+for (let i = 0; i < veces; i++) {
+    console.log(cadena + ' ' + (i + 1))
+}
+        
 }
 
-repetirN('hola', 10)
+repetirN('Hola', 3)
+
+console.log('********************************')
+console.log('Ejercicio 5')
+
+const invertir = (cadena='default') =>
+    (typeof cadena === 'string')
+    ?console.log(cadena.split('').reverse().join(''))
+    :console.error('Debes ingresa un string');
+
+
+invertir('aleuzeneV')
+
+console.log('********************************')
+console.log('Ejercicio 6')
+
+const numeroVeces = (cadena='' , texto='')=>{
+    if(typeof cadena !== 'string' || typeof texto !== 'string')return console.error('El valor debe ser string');
+
+    let i = 0;
+    contador = 0;
+
+    while(i !== -1){
+        i = cadena.indexOf(texto,i)
+        if(i !== -1){
+          i++;
+          contador++;      
+        }
+    }
+
+console.log(`La palabra "${texto}". Se repite ${contador} veces en el texto "${cadena}".`);
+       
+}
+
+numeroVeces('hola arnaldo como estas como te ha ido hoy como te sientes','como')
+
+

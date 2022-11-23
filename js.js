@@ -237,19 +237,122 @@ const convertir = (num = 0, tipo = 'C') => {
     return console.log(
       `${num} grados Celsius equivales a ${resultado} grados Fahrenheit`,
     )
-   
-
   }
 
   if (tipo === 'F') {
-
     resultado = (num - 32) * (5 / 9)
     return console.log(
       `${num} grados Fahrenheit  equivales a ${resultado} grados Celsius`,
     )
-
- 
   }
 }
 
 convertir(0, 'f')
+
+console.log('********************************')
+console.log('Ejercicio 15')
+
+const convertirBin = (numBin = undefined, base = undefined) => {
+  if (!base)
+    return console.error('Debe introducir un número en el segundo valor')
+  if (!numBin)
+    return console.error('Debe introducir un número en el primer valor')
+
+  if (typeof base !== 'number')
+    return console.error('Debe introducir un número en el segundo valor')
+
+  if (typeof numBin !== 'number')
+    return console.error('Debe introducir un número en el primer valor')
+
+  // I evaluate that numBin is binary
+  let arr = numBin.toString().split('')
+
+  //  evluate if value of b is zero or one
+  if (base === 2) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === '0' || arr[i] === '1') {
+        b = arr[i]
+      } else {
+        return console.error('El numero debe ser binario')
+        break
+      }
+    }
+    b === '0' || b === '1'
+      ? console.log(
+          `El binario ${numBin} en decimal es = ${parseInt(numBin, base)}`,
+        )
+      : false
+  } else if (base === 10) {
+    return console.log(
+      `El decimal ${numBin} en binario es = ${numBin.toString(2)}`,
+    )
+  }
+}
+convertirBin(1110011, 2)
+
+console.log('********************************')
+console.log('Ejercicio 16')
+
+const aplicarDescuento = (monto = 0, porcen = 0) => {
+  if (typeof monto !== 'number')
+    return console.error(`El monto debe ser un número`)
+  if (typeof porcen !== 'number')
+    return console.error(`El porcentaje debe ser un número`)
+  if (monto < 0 || porcen < 0)
+    return console.error(`No se acepta número negativo`)
+
+  console.log(
+    `El ${porcen} por ciento de descuento de ${monto} es ${
+      (porcen * monto) / 100
+    }, tu monto total queda en ${monto - (porcen * monto) / 100}.`,
+  )
+}
+
+aplicarDescuento(200, 10)
+
+console.log('********************************')
+console.log('Ejercicio 17')
+
+const calcularAnios = (fecha = undefined) => {
+  if (fecha === undefined) return console.error('Debe ingresar la fecha')
+  if (!(fecha instanceof Date))
+    return console.error('Debe ingresar una fecha válida')
+
+  let fechaAMenosFecha = new Date().getTime() - fecha.getTime()
+  let aniosEnMS = 1000 * 60 * 60 * 24 * 365
+  let anioTotal = Math.floor(fechaAMenosFecha / aniosEnMS)
+
+  return Math.sign(anioTotal) === -1
+    ? console.info(
+        `Faltan ${Math.abs(anioTotal)} años para el ${fecha.getFullYear()}`,
+      )
+    : Math.sign(anioTotal) === 1
+    ? console.info(`Han pasado ${anioTotal} años desde ${fecha.getFullYear()}`)
+    : console.info(`Estamos en el años actual ${fecha.getFullYear()}`)
+}
+
+calcularAnios(new Date(2083, 3, 12))
+
+console.log('********************************')
+console.log('Ejercicio 18')
+
+const contarVocalesConsonantes = (cadena='') => {
+  if(typeof cadena !== 'string')return console.error('El valor introducidos deben ser String')
+  cadena = cadena.toLocaleLowerCase();
+  let vocales = 0, consonantes =0;
+  for (const letra of cadena) {
+    if(/[aeiouáéíóú]/.test(letra))vocales++;
+    
+    if(/[bcdfghjklmnñpqrstvwxyz]/.test(letra))consonantes++;
+    
+  }
+
+  return console.log({
+    cadena,
+    vocales,
+    consonantes
+  });
+  
+}
+contarVocalesConsonantes('arnaldo');
+
